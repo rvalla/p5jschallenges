@@ -2,7 +2,8 @@
 
 # p5 chanllenges
 
-Sometimes I have to teach something. I use this repository to teach some things about programming with **p5js**.  
+Sometimes I have to teach something. I use this repository to teach programming with **p5js**. The
+comments in the javascript code are in Spanish because I am in Buenos Aires as are my students.  
 
 ## standing upon the shoulders of giants
 
