@@ -1,4 +1,4 @@
-![logo](https://gitlab.com/rodrigovalla/p5jschallenges/-/raw/themoststable/assets/img/icon.png)
+![logo](https://gitlab.com/rodrigovalla/p5jschallenges/-/raw/themoststable/assets/img/icon_64.png)
 
 # p5 chanllenges
 
