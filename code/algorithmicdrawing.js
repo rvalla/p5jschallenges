@@ -4,10 +4,11 @@ Por ahora sabe dibujar líneas rectas nomás (con la tecla D). Su misión es ens
 a dibujar cosas más divertidas.
 Tengan en cuenta que:
 - La "D" agrega una línea.
+- La "J" salta sin dibujar.
 - Las flechitas se usan para girar y para cambiar las repeticiones de una línea.
 - El "+" y el "-" se usan para cambiar el tamaño.
 Primero prueben cómo funciona. Después ustedes tienen que usar las funciones
-drawing(l) y turn(a) para crear nuevas funciones. ¡Busquen comentarios más abajo!
+drawing(l), jump(l) y turn(a) para crear nuevas funciones. ¡Busquen comentarios más abajo!
 */
 
 let lw, step, textline;
@@ -28,8 +29,6 @@ function setup() {
 }
 
 function getScreen(){
-	print(c);
-	print(bg);
 	background(bg);
 	if (showinfo){
 		printInfo();
@@ -89,6 +88,11 @@ function turn(t){
 	currentdirection = (currentdirection + t)%8;
 }
 
+function jump(l){
+	p2 = getPoint(lastpoint, currentdirection, l);
+	lastpoint = p2;
+}
+
 function getPoint(p, d, l){
 	p2 = [];
 	p2[0] = p[0] + wheel[d][0] * step * l;
@@ -127,6 +131,9 @@ function buildDrawing(){
 				case "R":
 					aRoller(l);
 					break;
+				case "J":
+					jump(l);
+					break;
 				case "4":
 					aSquare(l);
 					break;
@@ -161,6 +168,11 @@ function keyPressed() {
 		iterations += str(currentiterations);
 	} else if (key === "R" || key === "r") {
 		dna += "R";
+		sizes += str(currentsize);
+		directions += str(direction);
+		iterations += str(currentiterations);
+	} else if (key === "J" || key === "j") {
+		dna += "J";
 		sizes += str(currentsize);
 		directions += str(direction);
 		iterations += str(currentiterations);
@@ -259,10 +271,8 @@ function startConfig(config) {
 	bg = color(34);
 	if (typeof(string) === "string"){
 		values = string.split(",");
-		print(values);
 		if (values.length === 3){
 			rgb = [Number(values[0]), Number(values[1]), Number(values[2])]
-			print(rgb);
 			if (!(isNaN(rgb[0]) || isNaN(rgb[1] || isNaN(rgb[2])))){
 				bg = color(rgb[0], rgb[1], rgb[2]);
 			}
@@ -272,7 +282,6 @@ function startConfig(config) {
 	c = color(153,170,169);
 	if (typeof(string) === "string"){
 		values = string.split(",");
-		print(values);
 		if (values.length === 3){
 			rgb = [Number(values[0]), Number(values[1]), Number(values[2])]
 			if (!(isNaN(rgb[0]) || isNaN(rgb[1] || isNaN(rgb[2])))){
